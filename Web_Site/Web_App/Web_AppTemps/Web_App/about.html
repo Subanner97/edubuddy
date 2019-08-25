@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/main.css' %}" />
+    <link rel="stylesheet" media="all" type="text/javascript" href="{% static 'Web_App/main.js' %}" />
+    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/bootstrap.min.css' %}" />
+    <title>WEB SITE</title>
+</head>
+<body class="landing">
+
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">EDUGYAAN</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="chat">EduBuddy</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="course">Courses</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="college">Colleges</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="admin">Admin Login</a>
+                    </li>
+                </ul>
+              </div>
+      </nav>
+      <div class="alert alert-dismissible alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h4 class="alert-heading">This is a project, we do not store any of your data and the information we provide is not accurate.</h4>
+            <p class="mb-0">Please use google for any important information <a href="#" class="alert-link">www.google.com</a>.</p>
+          </div>
+          <div class="container">
+                <h1 class="display-3">Hello</h1>
+                <p class="lead">We are a group of students from Meghnad Saha Institute of Technology and this is our minor project for MCA.</p>
+                <hr class="my-4">
+                <p>This is an education portal for displaying information about colleges and courses, we use SQLLite as our database, Django for our web framework. HTML and CSS is used for our UI. For the chatbot we used JavaScript and the Compromise NLP API.</p>
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">BACKEND</div>
+                        <div class="card-body">
+                          <h4 class="card-title">Suvoparno Banerjee</h4>
+                        </div>
+                      </div>
+                      <div class="card border-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">UI/UX</div>
+                            <div class="card-body">
+                              <h4 class="card-title">Satarup Mitra</h4>
+                            </div>
+                          </div>
+                          <div class="card border-primary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">DATABASE DESIGN AND ENTRY</div>
+                                <div claGss="card-body">
+                                  <h4 class="card-title">Udit Dutta and Saswato Sengupta</h4>
+                                </div>
+                              </div>
+                              <div class="card border-primary mb-3" style="max-width: 20rem;">
+                                    <div class="card-header">DOCUMENTATION</div>
+                                    <div class="card-body">
+                                      <h4 class="card-title">Subhankar Singh</h4>
+                                    </div>
+                                  </div>
+              </div>
+        <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+</body>
+<footer id="footer">
+        <div class="container">
+            <ul class="copyright">
+                <li>&copy; Suvoparno Banerjee, Udit Dutta, Satarup Mitra, Saswato Sengupta, Subhankar Singh</li>
+                <li>GITHUB: <a href="http://templated.co"></a></li>
+            </ul>
+        </div>
+    </footer>
+</html>

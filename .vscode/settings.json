@@ -1,0 +1,6 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.pythonPath": "/Users/Suvoparno/Documents/mcaminor/project/bin/python3.7",
+    "git.ignoreLimitWarning": true
+}
