@@ -1,15 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
-{% load staticfiles %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/main.css' %}" />
-    <link rel="stylesheet" media="all" type="text/javascript" href="{% static 'Web_App/main.js' %}" />
-    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/bootstrap.min.css' %}" />
-    <script src="{% static "Web_App/chatbot.js" %}"></script>
-
-    <title>WEB SITE</title>
+    <link rel="stylesheet" media="all" type="text/css" href="/static/Web_App/main.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="/static/Web_App/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<title>WEB SITE</title>
 </head>
 <body class="landing">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -17,7 +16,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -61,7 +60,11 @@
           <p id="chatlog1" class="chatlog">&nbsp;</p>
           <input type="text" name="chat" id="chatbox" placeholder="Hi there! I am here to help you out with questions regarding your career." onfocus="placeHolder()">
         </div>
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
         <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/464612/nlp_compromise.min.js'></script>
+        <script src="/static/Web_App/chatbot.js"></script>
         <script src="https://unpkg.com/compromise"></script>
 </section>
 </div>
@@ -73,148 +76,5 @@
         </ul>
     </div>
 </footer>
-<script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
-<script>
-  var messages = [], 
-  lastUserMessage = "", 
-  botMessage = "", 
-  botName = 'Edubuddy', 
-  marks = 0,
-  flag = 0,
-  question=false,
-  course=""
-  courselike=""
-  subjectlike=""
-  marksx=0
-  marksxii=0
-  jointwant=false
-  found=false
-  talking = true; 
-function chatbotResponse() {
-  const plugin = {
-    patterns:{
-      "(business|bba|mba|businessadministration|ca|chartered accountancy|bcom|commerce)": 'Commerce',
-      "(english|eng|bengali|hindi|history|hist|geo|geography)": 'Arts',
-      "(law|llb)": 'Law',
-      "(bca|bsc|msc|mca)": "Other",
-      "(computer|civil|chemical|it|electrical|ece|cse|civ|mechanical|mech)" : 'Engineering',
-      "(hello|hi|howdy|hello|hi)" : 'Greeting',
-      "(help|how|teachtutorial)" : 'Help',
-      "(guide|course|college)" : 'Guidance',
-    }
-  }  
-  nlp.plugin(plugin)
-  input = lastUserMessage;
-  let doc = nlp(input)
-  var n;
-  talking = true;
-  botMessage = "I'm not sure, please reach out to the admin office, I can call them if you ask me to"; 
-  if(doc.has('#Greeting')){
-    botMessage = 'Hello'
-  }
-  if(doc.has('#Help')){
-    botMessage = 'Type in a course you like or ask me for to find a course you like by typing in something like "Help me Decide"'
-  }
-  if(doc.has('#Guidance')){
-    botMessage = 'Okay, tell me what subject do you love the most ?'
-  }
-  if(doc.has('#Engineering')){
-    doc.toTitleCase()
-    botMessage = 'You like '+doc.out('text')+' Engineering ?'
-    question=true
-    subjectlike=doc.out('text')
-    course="engineering"
-  }
-  if(doc.has('#Arts')){
-    doc.toTitleCase()
-    botMessage = 'You like '+doc.out('text')+'?'
-    question=true
-    subjectlike=doc.out('text')
-    course="law"
-  }
-  if(doc.has('#Law')){
-    doc.toTitleCase()
-    botMessage = 'You like '+doc.out('text')+'?'
-    question=true
-    subjectlike=doc.out('text')
-    course="arts"
-  }
-  if(doc.has('#Commerce')){
-    doc.toTitleCase()
-    botMessage = 'You like '+doc.out('text')+'?'
-    question=true
-    subjectlike=doc.out('text')
-    course="arts"
-  }
-  if(question==true&&course=="engineering"&&doc.has("yes"))
-  {
-    courselike="engineering"
-    found=true
-    question=false
-  }
-  if(question==true&&course=="arts"&&doc.has("yes"))
-  {
-    courselike="arts"
-    found=true
-    question=false
-  }
-  if(question==true&&course=="commerce"&&doc.has("yes"))
-  {
-    courselike="commerce"
-    found=true
-    question=false
-  }
-  if(question==true&&course=="law"&&doc.has("yes"))
-  {
-    courselike="law"
-    found=true
-    question=false
-  }
-  if(found==true)
-  {
-    botMessage = 
-    botMessage = 'Ok I see <br> Would you like me to display relevant colleges ?'
-  }
-}
-
-function newEntry() {
-  if (document.getElementById("chatbox").value != "") {
-    lastUserMessage = document.getElementById("chatbox").value;
-    document.getElementById("chatbox").value = "";
-    messages.push(lastUserMessage);
-    chatbotResponse();
-    messages.push("<b>" + botName + ":</b> " + botMessage);
-    Speech(botMessage);
-    for (var i = 1; i < 12; i++) {
-      if (messages[messages.length - i])
-        document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
-    }
-  }
-}
-
-
-function Speech(say) {
-  if ('speechSynthesis' in window && talking) {
-    var utterance = new SpeechSynthesisUtterance(say);
-    //speechSynthesis.speak(utterance);
-  }
-}
-
-document.onkeypress = keyPress;
-function keyPress(e) {
-  var x = e || window.event;
-  var key = (x.keyCode || x.which);
-  if (key == 13 || key == 3) {
-    newEntry();
-  }
-  if (key == 38) {
-    console.log('hi')
-  }
-}
-
-function placeHolder() {
-  document.getElementById("chatbox").placeholder = "";
-}
-</script>
 	</body>
 </html>
