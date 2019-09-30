@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 <head>
     <meta charset="UTF-8">
-    <script src="https://unpkg.com/compromise@latest/builds/compromise.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/main.css' %}" />
-    <link rel="stylesheet" media="all" type="text/javascript" href="{% static 'Web_App/main.js' %}" />
-    <link rel="stylesheet" media="all" type="text/css" href="{% static 'Web_App/bootstrap.min.css' %}" />
-    <title>WEB SITE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="all" type="text/css" href="/static/Web_App/main.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="/static/Web_App/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<title>WEB SITE</title>
 </head>
 <body class="landing">
 
@@ -36,15 +35,18 @@
                   <li class="nav-item">
                       <a class="nav-link" href="about">About Us</a>
                     </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="admin/logout">Logout</a>
+                    </li>
+                    {% else %}
                     <li class="nav-item">
                       <a class="nav-link" href="admin">Admin Login</a>
                     </li>
+                    {% endif %}
                 </ul>
               </div>
       </nav>
-
-        <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-
     <!-- Banner -->
     
         <section id="banner">
@@ -127,7 +129,9 @@
         </footer>
 
     <!-- Scripts -->
-    <html>
-</html>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
